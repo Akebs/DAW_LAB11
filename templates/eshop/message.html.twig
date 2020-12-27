@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in{% endblock %}
+
+{% block header %}
+    
+    {%  embed 'eshop/header.html.twig'  %}        
+      {#  <meta charset="utf-8" http-equiv="refresh" content="5; url={{ path('products') }} "/>   #}
+        {% block carousel %}
+        {% endblock %} 
+    {% endembed %}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container"> 
+        <div class="panel {{panel_contextual_class}}">
+            <h4 class="panel-heading text-center">{{message}}</h4>  
+            <!--  posts start here-->
+            <div class="panel-body">
+                <div class="text-center">
+                    <p>Redirecting within 5 seconds...  </p>
+
+                </div>
+            </div>
+        </div>   
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include('eshop/footer.html.twig') %}
+{% endblock %}

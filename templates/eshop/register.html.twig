@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block header %}
+    
+    {%  embed 'eshop/header.html.twig'  %}
+        {% block carousel %}
+        {% endblock %}   
+    {% endembed %}
+{% endblock %}
+
+
+{% block body %}
+{#     {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %} #}
+    <div class="container"> 
+        <div class="panel panel-primary">
+            <h3 class="panel-heading text-center"> Create account </h3>  
+            <!--  posts start here-->
+            <div class="panel-body" style="color: #000">                
+
+                <div class="row">
+                    <!-- BEGIN FORM -->
+                    <div class="col-md-4 col-centered">
+                        {{ form_start(registrationForm) }}
+                            {{ form_row(registrationForm.name) }}
+                            {{ form_row(registrationForm.email) }}
+                            {{ form_row(registrationForm.plainPassword.first, {  label: 'Password'    }) }}
+                            {{ form_row(registrationForm.plainPassword.second,{  label: 'Retype Password'}) }}
+                            <button type="submit" class="btn">Register</button>
+                        {{ form_end(registrationForm) }}
+                    </div>     
+                </div>
+      
+                
+            </div>            
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include('eshop/footer.html.twig') %}
+{% endblock %}

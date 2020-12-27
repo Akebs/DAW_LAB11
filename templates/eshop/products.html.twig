@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to my Eshop!{% endblock %}
+
+{% block header %}
+	{{  include('eshop/header.html.twig') }}
+
+{%  endblock %}
+
+{% block body %}
+		<!-- posting panels begins-->
+		<div class="container">	
+		 	<div class="panel panel-info">
+		 		<h4 class="panel-heading text-center">{{ message }}</h4>	
+				<!--   categories buttons started -->
+				<div class="btn-group btn-group-justified text-center">
+					<p> <a class="btn btn-primary " href="{{ path('products') }}">All</a>
+					    {% for category in categories %}
+							<a class="btn btn-primary " href="{{ path('products',  { ('id') :  category.id  }) }}" alt="{{ category }}"> {{ category.name }}</a>
+					    {% endfor %}
+					</p>
+				</div> 
+				<!--   categories buttons end -->
+	 			<div class="panel-body">
+					{% for prod in products %}
+						<!-- products started -->
+			 			<div class="row">			 			
+							
+								<div class="panel panel-primary">
+									<div class="panel-heading text-center" >
+										<h1>{{ prod.name }}</h1>
+									</div>
+								</div>	
+								<div class="row">	
+									<div class="col-md-4">
+										<div class="row">
+											<div class="mydescription">
+												<p>{{ prod.description |raw }} </p>
+											</div>
+										</div>
+										<div class="row" >
+											<div class="panel-primary text-center" >		
+												<a href="{{ path('addproduct',  { ('id') : prod.id }) }}"> <h2> {{ prod.price   }} €/day </h2></a>
+												<input type="number" class="product-quantity" id="quantity" value="1" name="quantity" min="1" max="15">			
+												<input type="submit" value="Add to Cart" class="btnAddAction" />
+											</div>
+										</div>
+									</div>	
+									<div class="col-md-8">										
+											<img class="img-responsive" src="{{ asset('images/db/' ~ prod.image) }}" />									
+									</div>	
+								</div>
+						{#<div class="col-md-12">	</div>#}
+						</div>
+						<hr>				 		
+
+					{% endfor %}
+					<!-- post ends here-->	
+
+		 		</div>		
+				<!-- posts ended-->
+			</div>	
+
+
+		</div>
+{% endblock %}
+
+{% block footer %}
+	{% include('eshop/footer.html.twig') %}
+{%  endblock %}

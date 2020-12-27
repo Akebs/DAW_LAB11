@@ -1,0 +1,6 @@
+{% for category in categories %}
+	
+    <a href="{{ path('blog_show', {slug: category.slug}) }}">
+        {{ category.title }}
+    </a>
+{% endfor %}
